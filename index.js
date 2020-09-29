@@ -1,11 +1,11 @@
-let loginTest = require('./loginCase');
-let level3 = require('./main_level3/level3')
+let loginTest = require('./Login_Senario/main');
+let Mchlevel3Test = require('./Mch_Level3_Senario/main');
 
 const osSpecificOps = {
     platformName: 'Android',
     deviceName: '4b283c1f9905',
     autoGrantPermissions: true,
-    app: 'C:\\Users\\bmais\\Desktop\\E-CatAuto\\E-Cat\\build\\app\\outputs\\apk\\qas_homepro\\debug\\ecatalog-qas_homepro-debug-vn_1_0_0-vc_1-20200925_095453.apk'
+    app: 'C:\\Users\\bmais\\Documents\\SeniorHomepro\\flutter_ecatalog\\build\\app\\outputs\\apk\\dev\\debug\\ecatalog-dev-debug-vn_1_0_1-vc_1-20200929_135450.apk'
     // @todo support non-unix style path
     // app: 'C:\\Users\\bmais\\Documents\\appium_flutter_test\\myapp\\build\\app\\outputs\\apk\\debug\\app-debug.apk'
     // app: '/home/benntend/Desktop/appium_flutter_test/myapp/build/app/outputs/apk/debug/app-debug.apk',
@@ -21,5 +21,7 @@ const opts = {
     }
 };
 
-// loginTest.loginUseCase(opts);
-level3.seeMainLevel3(opts)
+loginTest.loginFail(opts);
+loginTest.loginPass(opts);
+Mchlevel3Test.seeMainLevel3(opts);
+Mchlevel3Test.searchBar(opts);
