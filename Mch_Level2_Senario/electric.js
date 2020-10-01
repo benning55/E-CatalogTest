@@ -137,7 +137,7 @@ const electricTest = function (opts) {
         });
 
         it('เครื่องกรองอากาศ', async function () {
-            this.timeout(300*1000);
+            this.timeout(300 * 1000);
             categoryTwo = byValueKey("catTwo1");
             subCategoryTwo = byValueKey("subCatTwoTxt1" + "in0");
             expect(await driver.getElementText(categoryTwo)).to.equal('เครื่องกรองอากาศ');
@@ -469,7 +469,7 @@ const electricTest = function (opts) {
                 }
             }
         });
-        
+
         it('จักรเย็บผ้า', async function () {
             this.timeout(300 * 1000);
             await driver.execute('flutter:scrollUntilVisible', byValueKey('lstViewVertical'), {
@@ -632,7 +632,7 @@ const electricTest = function (opts) {
             this.timeout(300 * 1000);
             await driver.execute('flutter:scrollUntilVisible', byValueKey('lstViewVertical'), {
                 item: byValueKey("catTwo13"),
-              dxScroll: 10,
+                dxScroll: 10,
                 dyScroll: -300
             });
             categoryTwo = byValueKey("catTwo13");
@@ -727,7 +727,7 @@ const electricTest = function (opts) {
                         break;
                 }
             }
-        });  
+        });
 
         it('อะไหล่เครื่องใช้ไฟฟ้า', async function () {
             this.timeout(300 * 1000);
@@ -790,8 +790,14 @@ const electricTest = function (opts) {
             }
         });
 
-        after(function () {
-            driver.deleteSession();
+        after(async function () {
+            backBtn = byValueKey('backIcon');
+            await driver.touchAction({
+                action: 'tap',
+                element: {
+                    elementId: backBtn
+                }
+            });
         });
 
     });

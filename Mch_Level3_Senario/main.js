@@ -1,5 +1,8 @@
 const wdio = require("webdriverio");
 // const assert = require('assert');
+var path = require('path'),
+	wd = require('wd'),
+	WdAndroid = require('wd-android');
 const {
     byValueKey,
     byText,
@@ -106,7 +109,7 @@ const searchBar = function (opts) {
     describe('Search bar in level 3', function (){
         before(async function () {
             this.timeout(50000 * 10000);
-            driver = await wdio.remote(opts);
+            driver = await wdio.remote(opts);    
 
             usernameField = byValueKey('usernameTxt');
             passwordField = byValueKey('passwordTxt');
@@ -126,13 +129,20 @@ const searchBar = function (opts) {
                 action: 'tap',
                 element: { elementId: byType('TextField') }
             });
-            await driver.execute('flutter:enterText', '255255');
-            await driver.pressKeyCode(66);
+            await driver2.pressKeycode(9);
+            await driver2.pressKeycode(12);
+            await driver2.pressKeycode(12);
+            await driver2.pressKeycode(9);
+            await driver2.pressKeycode(12);
+            await driver2.pressKeycode(12);
+            // await driver.execute('flutter:enterText', '255255');
+            // await driver.elementSendKeys(byType('TextField'), '255255');
+            // await driver.execute('flutter:sendKeyEvent', 66, { platForm: 'android' });
             await driver.execute('flutter:waitForAbsent', byType('TextField'));
         });
 
         after(function () {
-            driver.deleteSession();
+            driver.quit();
         });
     })
 }
