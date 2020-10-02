@@ -207,7 +207,7 @@ const tvTest = function (opts) {
                             dxScroll: -200,
                             dyScroll: 10
                         });
-                        expect(await driver.getElementText(subCategoryTwo)).to.equal('อุปกรณ์แก๊ตแจ็ต');
+                        expect(await driver.getElementText(subCategoryTwo)).to.equal('อุปกรณ์แก๊ตแจ๊ต');
                         break;
                 }
             }

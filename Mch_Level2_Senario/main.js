@@ -30,8 +30,8 @@ const testStart = function(opts){
     // garden.gardenTest(opts)
     // plumbing.plumbingTest(opts);
     // sport.sportTest(opts);
-    // handtool.handToolTest(opts);
-    tv.tvTest(opts)
+    handtool.handToolTest(opts);
+    // tv.tvTest(opts)
 };
 
 module.exports = {

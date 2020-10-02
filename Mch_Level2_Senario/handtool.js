@@ -330,7 +330,7 @@ const handToolTest = function (opts) {
                             dxScroll: -200,
                             dyScroll: 10
                         });
-                        expect(await driver.getElementText(subCategoryTwo)).to.equal('ชุดเครื่องมือช่าง');
+                        expect(await driver.getElementText(subCategoryTwo)).to.equal('ชุดเครืองมือช่าง');
                         break;
                     case 15:
                         driver.execute('flutter:scrollUntilVisible', scrollKey, {
@@ -375,7 +375,7 @@ const handToolTest = function (opts) {
                             dxScroll: -200,
                             dyScroll: 10
                         });
-                        expect(await driver.getElementText(subCategoryTwo)).to.equal('ปี๊มลม');
+                        expect(await driver.getElementText(subCategoryTwo)).to.equal('ปั๊มลม');
                         break;
                     case 3:
                         driver.execute('flutter:scrollUntilVisible', scrollKey, {
@@ -534,7 +534,7 @@ const handToolTest = function (opts) {
                 subCategoryTwo = byValueKey("subCatTwoTxt6" + "in" + j.toString());
                 switch (j) {
                     case 0:
-                        expect(await driver.getElementText(subCategoryTwo)).to.equal('กาวอเนกประสงค์');
+                        expect(await driver.getElementText(subCategoryTwo)).to.equal('กาวเอนกประสงค์');
                         break;
                     case 1:
                         driver.execute('flutter:scrollUntilVisible', scrollKey, {
@@ -765,7 +765,7 @@ const handToolTest = function (opts) {
                             dxScroll: -200,
                             dyScroll: 10
                         });
-                        expect(await driver.getElementText(subCategoryTwo)).to.equal('อุปกรณ์ระกษาความปลอดภัย');
+                        expect(await driver.getElementText(subCategoryTwo)).to.equal('อุปกรณ์รักษาความปลอดภัยรถยนต์');
                         break;
                 }
             }
