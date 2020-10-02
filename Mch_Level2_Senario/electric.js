@@ -10,7 +10,7 @@ const expect = require('chai').expect;
 
 const electricTest = function (opts) {
 
-    describe('Check electric category', function () {
+    describe('เครื่องใช้ไฟฟ้า', function () {
 
         before(async function () {
             this.timeout(50000 * 10000);
@@ -27,7 +27,7 @@ const electricTest = function (opts) {
             await driver.elementClick(byValueKey('catThree0'));
         });
 
-        it('Cathch first category', async function () {
+        it('เครื่องใช้ไฟฟ้าในครัวขนาดเล็ก', async function () {
             this.timeout(300 * 1000);
             categoryTwo = byValueKey("catTwo0");
             expect(await driver.getElementText(categoryTwo)).to.equal('เครื่องใช้ไฟฟ้าในครัวขนาดเล็ก');

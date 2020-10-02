@@ -16,22 +16,22 @@ const handtool = require('./handtool');
 const tv = require('./tv');
 
 const testStart = function(opts){
-    // electric.electricTest(opts);
-    // bathroom.bathroomTest(opts);
-    // bedroom.bedroomTest(opts);
-    // material.materialTest(opts)
-    // doorwindow.doorwindowTest(opts);
-    // electricSystem.electricsystemTest(opts);
-    // backgroundMaterial.backgroundMaterialTest(opts);
-    // furniture.furnitureTest(opts);
-    // indoor.indoorTest(opts);
-    // kitchen.kitchenTest(opts);
-    // lamp.lampTest(opts);
-    // garden.gardenTest(opts)
-    // plumbing.plumbingTest(opts);
-    // sport.sportTest(opts);
+    electric.electricTest(opts);
+    bathroom.bathroomTest(opts);
+    bedroom.bedroomTest(opts);
+    material.materialTest(opts)
+    doorwindow.doorwindowTest(opts);
+    electricSystem.electricsystemTest(opts);
+    backgroundMaterial.backgroundMaterialTest(opts);
+    furniture.furnitureTest(opts);
+    indoor.indoorTest(opts);
+    kitchen.kitchenTest(opts);
+    lamp.lampTest(opts);
+    garden.gardenTest(opts)
+    plumbing.plumbingTest(opts);
+    sport.sportTest(opts);
     handtool.handToolTest(opts);
-    // tv.tvTest(opts)
+    tv.tvTest(opts)
 };
 
 module.exports = {

@@ -10,7 +10,7 @@ const expect = require('chai').expect;
 
 const bathroomTest = function (opts) {
 
-    describe('Check bathroom category', function () {
+    describe('ห้องน้ำ', function () {
 
         before(async function () {
             this.timeout(50000 * 10000);
@@ -641,8 +641,14 @@ const bathroomTest = function (opts) {
             }
         });
 
-        after(function () {
-            driver.deleteSession();
+        after(async function () {
+            backBtn = byValueKey('backIcon');
+            await driver.touchAction({
+                action: 'tap',
+                element: {
+                    elementId: backBtn
+                }
+            });
         });
 
     });

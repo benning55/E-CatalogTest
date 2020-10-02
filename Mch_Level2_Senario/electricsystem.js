@@ -10,20 +10,20 @@ const expect = require('chai').expect;
 
 const electricsystemTest = function (opts) {
 
-    describe('Check bathroom category', function () {
+    describe('งานระบบไฟฟ้า', function () {
 
         before(async function () {
-            this.timeout(50000 * 10000);
-            driver = await wdio.remote(opts);
+            // this.timeout(50000 * 10000);
+            // driver = await wdio.remote(opts);
 
-            usernameField = byValueKey('usernameTxt');
-            passwordField = byValueKey('passwordTxt');
-            loginButton = byValueKey('loginBtn');
+            // usernameField = byValueKey('usernameTxt');
+            // passwordField = byValueKey('passwordTxt');
+            // loginButton = byValueKey('loginBtn');
 
-            await driver.elementSendKeys(usernameField, "551503");
-            await driver.elementSendKeys(passwordField, "551504");
-            await driver.elementClick(loginButton);
-            await driver.execute('flutter:waitForAbsent', loginButton);
+            // await driver.elementSendKeys(usernameField, "551503");
+            // await driver.elementSendKeys(passwordField, "551504");
+            // await driver.elementClick(loginButton);
+            // await driver.execute('flutter:waitForAbsent', loginButton);
             await driver.elementClick(byValueKey('catThree5'));
         });
 
@@ -558,8 +558,14 @@ const electricsystemTest = function (opts) {
             }
         });
 
-        after(function () {
-            driver.deleteSession();
+        after(async function () {
+            backBtn = byValueKey('backIcon');
+            await driver.touchAction({
+                action: 'tap',
+                element: {
+                    elementId: backBtn
+                }
+            });
         });
 
     });

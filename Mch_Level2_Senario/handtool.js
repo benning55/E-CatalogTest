@@ -14,16 +14,16 @@ const handToolTest = function (opts) {
 
         before(async function () {
             this.timeout(50000 * 10000);
-            driver = await wdio.remote(opts);
+            // driver = await wdio.remote(opts);
 
-            usernameField = byValueKey('usernameTxt');
-            passwordField = byValueKey('passwordTxt');
-            loginButton = byValueKey('loginBtn');
+            // usernameField = byValueKey('usernameTxt');
+            // passwordField = byValueKey('passwordTxt');
+            // loginButton = byValueKey('loginBtn');
 
-            await driver.elementSendKeys(usernameField, "551503");
-            await driver.elementSendKeys(passwordField, "551504");
-            await driver.elementClick(loginButton);
-            await driver.execute('flutter:waitForAbsent', loginButton);
+            // await driver.elementSendKeys(usernameField, "551503");
+            // await driver.elementSendKeys(passwordField, "551504");
+            // await driver.elementClick(loginButton);
+            // await driver.execute('flutter:waitForAbsent', loginButton);
             await driver.execute('flutter:scrollUntilVisible', byType('ListView'), {
                 item: byValueKey("catThree14"),
                 dxScroll: 10,
@@ -867,106 +867,14 @@ const handToolTest = function (opts) {
             }
         });
 
-        // it('ผลิตภัณฑ์แม่และเด็ก', async function () {
-        //     this.timeout(300 * 1000);
-        //     await driver.execute('flutter:scrollUntilVisible', byValueKey('lstViewVertical'), {
-        //         item: byValueKey("catTwo13"),
-        //       dxScroll: 10,
-        //         dyScroll: -300
-        //     });
-        //     categoryTwo = byValueKey("catTwo13");
-        //     expect(await driver.getElementText(categoryTwo)).to.equal('ผลิตภัณฑ์แม่และเด็ก');
-        //     scrollKey = byValueKey('horiLst13');
-        //     var j;
-        //     for (j = 0; j < 3; j++) {
-        //         subCategoryTwo = byValueKey("subCatTwoTxt13" + "in" + j.toString());
-        //         switch (j) {
-        //             case 0:
-        //                 expect(await driver.getElementText(subCategoryTwo)).to.equal('ผลิตภัณฑ์เพื่อสุขอนามัย');
-        //                 break;
-        //             case 1:
-        //                 driver.execute('flutter:scrollUntilVisible', scrollKey, {
-        //                     item: subCategoryTwo,
-        //                     dxScroll: -200,
-        //                     dyScroll: 10
-        //                 });
-        //                 expect(await driver.getElementText(subCategoryTwo)).to.equal('ผลิตภัณฑ์จำเป็นสำหรับเด็ก');
-        //                 break;
-        //             case 2:
-        //                 driver.execute('flutter:scrollUntilVisible', scrollKey, {
-        //                     item: subCategoryTwo,
-        //                     dxScroll: -200,
-        //                     dyScroll: 10
-        //                 });
-        //                 expect(await driver.getElementText(subCategoryTwo)).to.equal('ผลิตภัณฑ์การทานอาหาร');
-        //                 break;
-        //         }
-        //     }
-        // });  
-
-        // it('อะไหล่เครื่องใช้ไฟฟ้า', async function () {
-        //     this.timeout(300 * 1000);
-        //     await driver.execute('flutter:scrollUntilVisible', byValueKey('lstViewVertical'), {
-        //         item: byValueKey("catTwo14"),
-        //         dxScroll: 10,
-        //         dyScroll: -300
-        //     });
-        //     categoryTwo = byValueKey("catTwo14");
-        //     expect(await driver.getElementText(categoryTwo)).to.equal('อะไหล่เครื่องใช้ไฟฟ้า');
-        //     scrollKey = byValueKey('horiLst14');
-        //     var j;
-        //     for (j = 0; j < 10; j++) {
-        //         subCategoryTwo = byValueKey("subCatTwoTxt14" + "in" + j.toString());
-        //         switch (j) {
-        //             case 0:
-        //                 expect(await driver.getElementText(subCategoryTwo)).to.equal('อะไหล่ตู้เย็น');
-        //                 break;
-        //             case 1:
-        //                 driver.execute('flutter:scrollUntilVisible', scrollKey, {
-        //                     item: subCategoryTwo,
-        //                     dxScroll: -200,
-        //                     dyScroll: 10
-        //                 });
-        //                 expect(await driver.getElementText(subCategoryTwo)).to.equal('อะไหล่ตู้น้ำดื่ม');
-        //                 break;
-        //             case 2:
-        //                 driver.execute('flutter:scrollUntilVisible', scrollKey, {
-        //                     item: subCategoryTwo,
-        //                     dxScroll: -200,
-        //                     dyScroll: 10
-        //                 });
-        //                 expect(await driver.getElementText(subCategoryTwo)).to.equal('อะไหล่พัดลม');
-        //                 break;
-        //             case 3:
-        //                 driver.execute('flutter:scrollUntilVisible', scrollKey, {
-        //                     item: subCategoryTwo,
-        //                     dxScroll: -200,
-        //                     dyScroll: 10
-        //                 });
-        //                 expect(await driver.getElementText(subCategoryTwo)).to.equal('อุปกรณ์เสริมเครื่องซักผ้า');
-        //                 break;
-        //             case 4:
-        //                 driver.execute('flutter:scrollUntilVisible', scrollKey, {
-        //                     item: subCategoryTwo,
-        //                     dxScroll: -200,
-        //                     dyScroll: 10
-        //                 });
-        //                 expect(await driver.getElementText(subCategoryTwo)).to.equal('อุปกรณ์เสริมเครื่องดูดฝุ่น');
-        //                 break;
-        //             case 5:
-        //                 driver.execute('flutter:scrollUntilVisible', scrollKey, {
-        //                     item: subCategoryTwo,
-        //                     dxScroll: -200,
-        //                     dyScroll: 10
-        //                 });
-        //                 expect(await driver.getElementText(subCategoryTwo)).to.equal('อุปกรณ์เสริมเครื่องปรับอากาศ');
-        //                 break;
-        //         }
-        //     }
-        // });
-
-        after(function () {
-            driver.deleteSession();
+        after(async function () {
+            backBtn = byValueKey('backIcon');
+            await driver.touchAction({
+                action: 'tap',
+                element: {
+                    elementId: backBtn
+                }
+            });
         });
 
     });
