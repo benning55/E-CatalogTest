@@ -25,7 +25,7 @@ const Format2Mch1Test = function (opts, txt, amount, cat3) {
                 await driver.execute('flutter:waitForAbsent', loginButton);
             }
             if(cat3 > 1){
-                await driver.execute('flutter:scroll', byType('ListView'), {dx: 50, dy: -200, durationMilliseconds: 1000, frequency: 60});
+                await driver.execute('flutter:scroll', byType('ListView'), {dx: 50, dy: -100, durationMilliseconds: 100, frequency: 60});
             }
             await driver.elementClick(byValueKey('catThree' + cat3.toString()));
         });

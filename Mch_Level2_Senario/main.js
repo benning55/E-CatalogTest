@@ -50,6 +50,7 @@ const testMch2ToMch1 = function(opts){
     plumbing.plumbing2Mch1Test(opts);
     sport.sport2Mch1Test(opts);
     handtool.handTool2Mch1Test(opts);
+    tv.tv2Mch1Test(opts);
 }
 
 module.exports = {
