@@ -935,7 +935,12 @@ const indoorTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const indoor2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดผลิตภัณฑ์และของใช้ภายในบ้าน', 14, 8);
+}
 
 module.exports = {
-    indoorTest
+    indoorTest,
+    indoor2Mch1Test
 }

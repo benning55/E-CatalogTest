@@ -571,7 +571,12 @@ const electricsystemTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const electricsystem2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดวัสดุก่อสร้าง', 10, 5);
+}
 
 module.exports = {
-    electricsystemTest
+    electricsystemTest,
+    electricsystem2Mch1Test
 }

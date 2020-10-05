@@ -656,7 +656,12 @@ const gardenTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const garden2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดสวนและอุปกรณ์ตกแต่ง', 10, 11);
+}
 
 module.exports = {
-    gardenTest
+    gardenTest,
+    garden2Mch1Test
 }

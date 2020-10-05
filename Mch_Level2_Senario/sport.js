@@ -444,7 +444,13 @@ const sportTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const sport2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดกีฬาและฟิตเนส', 6, 13);
+}
+
 
 module.exports = {
-    sportTest
+    sportTest,
+    sport2Mch1Test
 }

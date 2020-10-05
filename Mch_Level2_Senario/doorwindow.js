@@ -309,7 +309,12 @@ const doorwindowTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const doorwindow2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดประตูและหน้าต่าง', 4, 4);
+}
 
 module.exports = {
-    doorwindowTest
+    doorwindowTest,
+    doorwindow2Mch1Test
 }

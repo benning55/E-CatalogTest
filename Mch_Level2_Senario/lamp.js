@@ -373,7 +373,12 @@ const lampTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const lamp2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดโคมไฟและหลอดไฟ', 6, 10);
+}
 
 module.exports = {
-    lampTest
+    lampTest,
+    lamp2Mch1Test
 }

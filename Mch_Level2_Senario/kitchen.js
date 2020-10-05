@@ -613,7 +613,12 @@ const kitchenTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const kitchen2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดห้องครัวและอุปกรณ์', 9, 9);
+}
 
 module.exports = {
-    kitchenTest
+    kitchenTest,
+    kitchen2Mch1Test
 }

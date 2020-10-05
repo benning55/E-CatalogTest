@@ -7,6 +7,7 @@ const {
     pageBack
 } = require('appium-flutter-finder');
 const expect = require('chai').expect;
+const util = require('./utils');
 
 const bathroomTest = function (opts) {
 
@@ -654,7 +655,11 @@ const bathroomTest = function (opts) {
     });
 }
 
+const bathroom2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดห้องน้ำ', 12, 1);
+}
 
 module.exports = {
-    bathroomTest
+    bathroomTest,
+    bathroom2Mch1Test
 }

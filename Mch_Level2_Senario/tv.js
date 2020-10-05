@@ -440,7 +440,12 @@ const tvTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const tv2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดทีวีและเครื่องเสียง', 8, 15);
+}
 
 module.exports = {
-    tvTest
+    tvTest,
+    tv2Mch1Test
 }

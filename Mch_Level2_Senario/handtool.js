@@ -880,7 +880,13 @@ const handToolTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const handTool2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดเครื่องมือช่างและฮาร์ดแวร์', 13, 14);
+}
+
 
 module.exports = {
-    handToolTest
+    handToolTest,
+    handTool2Mch1Test
 }

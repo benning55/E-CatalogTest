@@ -257,7 +257,12 @@ const bedroomTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const bedroom2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดห้องนอน', 5, 2);
+}
 
 module.exports = {
-    bedroomTest
+    bedroomTest,
+    bedroom2Mch1Test
 }

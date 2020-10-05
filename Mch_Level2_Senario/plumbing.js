@@ -380,7 +380,13 @@ const plumbingTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const plumbing2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดงานระบบประปา', 6, 12);
+}
+
 
 module.exports = {
-    plumbingTest
+    plumbingTest,
+    plumbing2Mch1Test
 }

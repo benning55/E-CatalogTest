@@ -659,7 +659,13 @@ const furnitureTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const furniture2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดเฟอร์นิเจอร์และของแต่งบ้าน', 13, 7);
+}
+
 
 module.exports = {
-    furnitureTest
+    furnitureTest,
+    furniture2Mch1Test
 }

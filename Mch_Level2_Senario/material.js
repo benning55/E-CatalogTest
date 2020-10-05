@@ -542,7 +542,12 @@ const materialTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const material2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดวัสดุก่อสร้าง', 5, 3);
+}
 
 module.exports = {
-    materialTest
+    materialTest,
+    material2Mch1Test
 }

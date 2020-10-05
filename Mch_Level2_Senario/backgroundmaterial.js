@@ -345,7 +345,12 @@ const backgroundMaterialTest = function (opts) {
     });
 }
 
+const util = require('./utils');
+const backgroundMaterial2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบปุ่มทั้งหมดหมวดวัสดุปูพื้นและผนัง', 8, 6);
+}
 
 module.exports = {
-    backgroundMaterialTest
+    backgroundMaterialTest,
+    backgroundMaterial2Mch1Test
 }

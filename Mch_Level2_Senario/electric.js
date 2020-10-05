@@ -7,6 +7,7 @@ const {
     pageBack
 } = require('appium-flutter-finder');
 const expect = require('chai').expect;
+const util = require('./utils');
 
 const electricTest = function (opts) {
 
@@ -804,6 +805,11 @@ const electricTest = function (opts) {
 }
 
 
+const electric2Mch1Test = function (opts) {
+    util.Format2Mch1Test(opts, 'ทดสอบหน้าเครื่องใช้ไฟฟ้า', 15, 0);
+}
+
 module.exports = {
-    electricTest
+    electricTest,
+    electric2Mch1Test
 }
