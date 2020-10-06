@@ -214,12 +214,56 @@ const mchFilterTest = function(opts){
         });
 
         after(function () {
-            driver.deleteSession();
+            // driver.deleteSession();
         });
     });
 }
 
+const mchCompare1 = function (opts) {
+    describe('เช็คช่องเปรียบเทียบหน้า Mch_list', function () {
+
+        before(async function () {
+            this.timeout(50000 * 10000);
+            // driver = await wdio.remote(opts);
+
+            // usernameField = byValueKey('usernameTxt');
+            // passwordField = byValueKey('passwordTxt');
+            // loginButton = byValueKey('loginBtn');
+
+            // await driver.elementSendKeys(usernameField, "551503");
+            // await driver.elementSendKeys(passwordField, "551504");
+            // await driver.elementClick(loginButton);
+            // await driver.execute('flutter:waitForAbsent', loginButton);
+            // await driver.execute('flutter:scroll', byType('ListView'), {
+            //     dx: 10,
+            //     dy: -550,
+            //     durationMilliseconds: 120,
+            //     frequency: 60
+            // });
+            // await driver.elementClick(byValueKey('catThree13'));
+            // // totalbtn = byValueKey('totalSubBtn0');
+            // // await driver.elementClick(byText('เครื่องยกน้ำหนัก'));
+            // await driver.execute('flutter:scrollIntoView', byValueKey('lstViewVertical'), byValueKey('totalSubBtn2'), {alignment: 0.0});
+            // await driver.elementClick(byValueKey('totalSubBtn2'));
+            // await driver.execute('flutter:waitForAbsent', byValueKey('totalSubBtn2'));
+        });
+
+        it('กดเช็คช่องเปรียบเทียบและขึ้น 1/3', async function () {
+            this.timeout(300 * 10000);
+            await driver.elementClick(byValueKey('compareCheck0'));
+            // driver.execute('flutter:waitFor', byValueKey('compare1'), {durationMilliseconds: 1000});
+            expect(await driver.getElementText(byValueKey('compare1'))).to.include('1/3');          
+        });
+
+        after(function () {
+            driver.deleteSession();
+        });
+
+    });
+};
+
 module.exports = {
     testMainLevel1,
-    mchFilterTest
+    mchFilterTest,
+    mchCompare1
 }
