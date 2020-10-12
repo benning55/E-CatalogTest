@@ -39,7 +39,7 @@ const loginFail = function (opts) {
             await driver.elementClear(usernameField);
             await driver.elementClear(passwordField);
             await driver.elementSendKeys(usernameField, "551502");
-            await driver.elementSendKeys(passwordField, "551504");
+            await driver.elementSendKeys(passwordField, "551505");
             await driver.elementClick(loginButton);
             expect(await driver.getElementText(byText('ไม่พบข้อมูลชื่อผู้ใช้งาน'))).to.equal('ไม่พบข้อมูลชื่อผู้ใช้งาน');
             await driver.elementClick(byText('ปิด'));
@@ -69,7 +69,7 @@ const loginPass = function(opts) {
             await driver.elementClear(usernameField);
             await driver.elementClear(passwordField);
             await driver.elementSendKeys(usernameField, "551503");
-            await driver.elementSendKeys(passwordField, "551504");
+            await driver.elementSendKeys(passwordField, "551505");
             await driver.elementClick(loginButton);
             await driver.execute('flutter:waitForAbsent', loginButton);
             // expect(await driver.getElementText(byText('ประชาชื่น')), 'ประชาชื่น')
