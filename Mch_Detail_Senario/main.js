@@ -493,12 +493,12 @@ const mchDetailStock = function(opts) {
         describe('กดปุ่ม more เพื่อดูรายการเพิ่มและการเรียงจำนวนของ', function() {
 
             it('กดปุ่มและเช็คเรียงจำนวน มาก -> น้อย', async function () {
-                this.timeout(2000);
+                this.timeout(10000*10);
                 await driver.elementClick(byValueKey('moreStockBtn'));
                 var listQty = [];
                 var i;
                 for(i = 0; i < 16; i++){
-                    driver.execute('flutter:scrollUntilVisible', byValueKey('SingleChildScrollView'), {
+                    driver.execute('flutter:scrollUntilVisible', byType('SingleChildScrollView'), {
                         item: byValueKey("store"+i.toString()+"Qty"),
                         dxScroll: 10,
                         dyScroll: -100
@@ -510,7 +510,7 @@ const mchDetailStock = function(opts) {
                 listSorted = listQty.sort(function(a, b){return b-a});
                 expect(listQty).to.equal(listSorted);
             });
-            
+
         });
 
 
