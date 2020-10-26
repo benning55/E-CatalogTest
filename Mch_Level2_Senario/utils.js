@@ -20,7 +20,7 @@ const Format2Mch1Test = function (opts, txt, amount, cat3) {
                 loginButton = byValueKey('loginBtn');
 
                 await driver.elementSendKeys(usernameField, "551503");
-                await driver.elementSendKeys(passwordField, "551504");
+                await driver.elementSendKeys(passwordField, "551505");
                 await driver.elementClick(loginButton);
                 await driver.execute('flutter:waitForAbsent', loginButton);
             }

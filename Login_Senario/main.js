@@ -10,6 +10,7 @@ const expect = require('chai').expect;
 
 const loginFail = function (opts) {
     describe('Login to fail', function () {
+        
 
         before(async function () {
             this.timeout(50000 * 10000);
@@ -18,6 +19,25 @@ const loginFail = function (opts) {
             usernameField = byValueKey('usernameTxt');
             passwordField = byValueKey('passwordTxt');
             loginButton = byValueKey('loginBtn')
+        });
+
+        beforeEach(function () {
+            if (skip) {
+                this.skip();
+            }
+        });
+    
+        afterEach(async function () {
+            if (this.currentTest.state == 'failed') {
+                var imgName = (this.currentTest.parent.title).replace(/ /g, "_");
+                var screenshotPath = 'C:\\Users\\bmais\\Documents\\SeniorHomepro\\E-CatalogTest\\images\\'
+                await driverWd.takeScreenshot().then(
+                    function (image, err) {
+                        require('fs').writeFile(screenshotPath + imgName + '.png', image, 'base64', function (err) {});
+                    }
+                );
+                skip = true;
+            }
         });
 
         it('Check Log In Page', async function() {

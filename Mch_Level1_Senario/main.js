@@ -22,7 +22,7 @@ const testMainLevel1 = function (opts) {
             loginButton = byValueKey('loginBtn');
 
             await driver.elementSendKeys(usernameField, "551503");
-            await driver.elementSendKeys(passwordField, "551504");
+            await driver.elementSendKeys(passwordField, "551505");
             await driver.elementClick(loginButton);
             await driver.execute('flutter:waitForAbsent', loginButton);
         });
@@ -84,7 +84,7 @@ const mchFilterTest = function(opts){
             loginButton = byValueKey('loginBtn');
 
             await driver.elementSendKeys(usernameField, "551503");
-            await driver.elementSendKeys(passwordField, "551504");
+            await driver.elementSendKeys(passwordField, "551505");
             await driver.elementClick(loginButton);
             await driver.execute('flutter:waitForAbsent', loginButton);
             await driver.execute('flutter:scroll', byType('ListView'), {
