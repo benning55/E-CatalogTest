@@ -1,5 +1,5 @@
 const {
-    expect
+    expect, assert
 } = require("chai");
 const asserters = require("wd/lib/asserters");
 const wd = require("wd");
@@ -113,133 +113,23 @@ const test = function (osSpecificOps) {
                 await el.click();
             });
         });
-
-        it('เช็ค ความกว้าง', async function() {
-            // this.timeout(50000);
-            await new Promise(res => setTimeout(res, 2000));
-            expect(await driverWd.elementByAccessibilityId("ความกว้าง (ซม.)\n18\n18\n18")).to.exist;
-        });
-
-        it('เช็ค ความลึก', async function() {
-            // this.timeout(50000);
-            await new Promise(res => setTimeout(res, 2000));
-            const elPath = "ความลึก (ซม.)\n7.5\n6\n6";
-            const element = await utils.scrollUntilVisible(
-                "accessibility id",
-                elPath,
-                driverWd,
-            );
-            expect(element).to.exist;
-        });
-
-        it('เช็ค Material', async function() {
-            // this.timeout(50000);
-            await new Promise(res => setTimeout(res, 2000));
-            const elPath = "Material\nพลาสติก\nพลาสติก\nพลาสติก";
-            const element = await utils.scrollUntilVisible(
-                "accessibility id",
-                elPath,
-                driverWd,
-            );
-            expect(element).to.exist;
-        });
-
-        it('เช็ค ระดับ', async function() {
-            // this.timeout(50000);
-            await new Promise(res => setTimeout(res, 2000));
-            const elPath = "ระดับ\n5ระดับ\n1ระดับ\n1ระดับ";
-            const element = await utils.scrollUntilVisible(
-                "accessibility id",
-                elPath,
-                driverWd,
-            );
-            expect(element).to.exist;
-        });
-
-        it('เช็ค อุปกรณ์เสริม', async function() {
-            // this.timeout(50000);
-            await new Promise(res => setTimeout(res, 2000));
-            const elPath = "อุปกรณ์เสริม\nหัวปั่น 2 ชนิด\nไม่มี\nไม่มี";
-            const element = await utils.scrollUntilVisible(
-                "accessibility id",
-                elPath,
-                driverWd,
-            );
-            expect(element).to.exist;
-        });
-
-        it('เช็ค ฺBrand', async function() {
-            // this.timeout(50000);
-            await new Promise(res => setTimeout(res, 2000));
-            const elPath = "Brand\nSMARTHOME\nCOCORU\nCOCORU";
-            const element = await utils.scrollUntilVisible(
-                "accessibility id",
-                elPath,
-                driverWd,
-            );
-            expect(element).to.exist;
-        });
-
-        it('เช็ค ความสูง', async function() {
-            // this.timeout(50000);
-            await new Promise(res => setTimeout(res, 2000));
-            const elPath = "ความสูง (ซม.)\n14\n11.5\n11.5";
-            const element = await utils.scrollUntilVisible(
-                "accessibility id",
-                elPath,
-                driverWd,
-            );
-            expect(element).to.exist;
-        });
-
-        it('เช็ค น้ำหนัก', async function() {
-            // this.timeout(50000);
-            await new Promise(res => setTimeout(res, 2000));
-            const elPath = "น้ำหนัก (กก.)\n.65\n.8\n.8";
-            const element = await utils.scrollUntilVisible(
-                "accessibility id",
-                elPath,
-                driverWd,
-            );
-            expect(element).to.exist;
-        });
-
-        it('เช็ค กำลังไฟ', async function() {
-            // this.timeout(50000);
-            await new Promise(res => setTimeout(res, 2000));
-            const elPath = "กำลังไฟ\n100วัตต์\n200วัตต์\n200วัตต์";
-            const element = await utils.scrollUntilVisible(
-                "accessibility id",
-                elPath,
-                driverWd,
-            );
-            expect(element).to.exist;
-        });
-
-        it('เช็ค Size', async function() {
-            // this.timeout(50000);
-            await new Promise(res => setTimeout(res, 2000));
-            const elPath = "Size\nไม่มี\nไม่มี\nไม่มี";
-            const element = await utils.scrollUntilVisible(
-                "accessibility id",
-                elPath,
-                driverWd,
-            );
-            expect(element).to.exist;
-        });
-
-        it('เช็ค Color', async function() {
-            // this.timeout(50000);
-            await new Promise(res => setTimeout(res, 2000));
-            const elPath = "Color\nขาว\nแดง\nฟ้า";
-            const element = await utils.scrollUntilVisible(
-                "accessibility id",
-                elPath,
-                driverWd,
-            );
-            expect(element).to.exist;
-        });
     });
+
+    describe('Add compare product to cart', function() {
+
+        it('กดสินค้าที่เลือกเพิ่มเข้าตะกร้า', async function() {
+            await driverWd.waitForElementByXPath("(//android.widget.Button[@content-desc='ใส่รถเข็น'])[2]", asserters.isDisplayed, 2000, 100).then(async function(el) {
+                await el.click();
+            });
+        });
+
+        it('ไปยังหน้าตะกร้าเพื่อตรวจสอบสินค้าที่เลือก', async function() {
+            await driverWd.waitForElementByAccessibilityId("1\nรถเข็นสินค้า\nแท็บที่ 2 จาก 4", asserters.isDisplayed, 2000, 100).then(async function(el) {
+                await el.click();
+            });
+            expect(await driverWd.element('accessibility id', 'SKU: 1085163\nเครื่องผสมอาหารมือถือ COCORU AKAI สีแดง\n799/EA\n799')).to.exist;
+        });
+    })
 
     after (async function (){
         await driverWd.quit();

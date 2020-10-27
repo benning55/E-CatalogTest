@@ -48,9 +48,6 @@ const scrollUntilVisible = async (
     scrollInverse
   ) => {
     let touchAction;
-    console.log(horizon);
-    console.log(scrollInverse);
-    console.log(driver);
     scrollInverse = typeof scrollInverse !== "undefined" ? scrollInverse : false;
     horizon = typeof horizon !== "undefined" ? horizon : false;
     if (!horizon) {

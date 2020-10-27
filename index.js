@@ -7,6 +7,9 @@ let TestFluke = require('./testlikemoandfluke/main');
 let LogoutViaUserTest = require('./Logout_Senario/logoutViaUser');
 let LogoutViaMenuTest = require('./Logout_Senario/logoutViaMenu');
 let Compare3Things = require('./Compare_Senario/compare3things');
+let CompareMoreThan3 = require('./Compare_Senario/comparemorethan3');
+let CompareDelete = require('./Compare_Senario/compareDelete');
+let CompareToCart = require('./Compare_Senario/compareToCart');
 
 const osSpecificOps = {
     platformName: 'Android',
@@ -45,4 +48,7 @@ const opts = {
 // TestFluke.testFluke(osSpecificOps)
 // LogoutViaUserTest.test(osSpecificOps);
 // LogoutViaMenuTest.test(osSpecificOps);
-Compare3Things.test(osSpecificOps);
+// Compare3Things.test(osSpecificOps);
+// CompareMoreThan3.test(osSpecificOps);
+// CompareDelete.test(osSpecificOps);
+// CompareToCart.test(osSpecificOps);
