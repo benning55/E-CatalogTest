@@ -129,7 +129,7 @@ const test = function (osSpecificOps) {
             });
             expect(await driverWd.element('accessibility id', 'SKU: 1085163\nเครื่องผสมอาหารมือถือ COCORU AKAI สีแดง\n799/EA\n799')).to.exist;
         });
-    })
+    });
 
     after (async function (){
         await driverWd.quit();

@@ -10,6 +10,7 @@ let Compare3Things = require('./Compare_Senario/compare3things');
 let CompareMoreThan3 = require('./Compare_Senario/comparemorethan3');
 let CompareDelete = require('./Compare_Senario/compareDelete');
 let CompareToCart = require('./Compare_Senario/compareToCart');
+let CartAdjustment = require('./Cart_Senario/cartAdjustment');
 
 const osSpecificOps = {
     platformName: 'Android',
@@ -33,6 +34,7 @@ const opts = {
     }
 };
 
+// ทดสอบกับ Appium Flutter Driver 
 // loginTest.loginFail(opts);
 // loginTest.loginPass(opts);
 // Mchlevel3Test.seeMainLevel3(opts);
@@ -46,9 +48,12 @@ const opts = {
 // MchDetailTest.mchDetailTab(opts);
 // MchDetailTest.mchDetailStock(opts);
 // TestFluke.testFluke(osSpecificOps)
+
+// ทดสอบด้วย Wd driver กับ ตัว Appium เอง
 // LogoutViaUserTest.test(osSpecificOps);
 // LogoutViaMenuTest.test(osSpecificOps);
 // Compare3Things.test(osSpecificOps);
 // CompareMoreThan3.test(osSpecificOps);
 // CompareDelete.test(osSpecificOps);
 // CompareToCart.test(osSpecificOps);
+CartAdjustment.test(osSpecificOps);
