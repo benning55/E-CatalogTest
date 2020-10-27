@@ -29,7 +29,7 @@ const test = function (osSpecificOps) {
     });
 
 
-    describe("initial for cart 2", () => {
+    describe("initial for cart 3", () => {
 
         it("Start Application", async function () {
             this.timeout(3000 * 10000);
@@ -106,25 +106,25 @@ const test = function (osSpecificOps) {
     });
 
 
-    describe('สร้างใบคำสั่งซื้อผ่าน', async function(){
+    describe('สร้างใบคำสั่งซื้อไม่ผ่าน', async function(){
 
-        it('กรอกเบอร์โทรศพท์มือถือ', async function(){
+        it('กรอกเบอร์โทรศพท์บ้าน', async function(){
             this.timeout(50000)
             await driverWd.waitForElementByXPath("//*[contains(@content-desc, 'หมายเลขโทรศัพท์อ้างอิง')]/following::android.widget.EditText", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 await el.click();
             });
             await new Promise(res => setTimeout(res, 2000));
-            utils.textToPress('0999999999', driverWd);
-            await new Promise(res => setTimeout(res, 3000));
+            utils.textToPress('025555555', driverWd);
+            await new Promise(res => setTimeout(res, 4000));
             await driverWd.pressKeycode(66);
             await driverWd.waitForElementByAccessibilityId("ยืนยัน", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 await el.click();
             });
         });
 
-        it('แจ้งเตือนแสดงว่าผ่าน', async function(){
+        it('แจ้งเตือนแสดงว่าไม่ผ่าน', async function(){
             await new Promise(res => setTimeout(res, 1000));
-            await driverWd.waitForElementByXPath("//*[contains(@content-desc, 'สร้างใบคำสั่งซื้อเลขที่')]", asserters.isDisplayed, 2000, 100).then(async function(el) {
+            await driverWd.waitForElementByXPath("//*[contains(@content-desc, 'หมายเลขโทรศัพท์ไม่ถูกต้อง')]", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 expect(el).to.exist;
             });
         });

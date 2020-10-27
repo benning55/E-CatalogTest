@@ -11,6 +11,8 @@ let CompareMoreThan3 = require('./Compare_Senario/comparemorethan3');
 let CompareDelete = require('./Compare_Senario/compareDelete');
 let CompareToCart = require('./Compare_Senario/compareToCart');
 let CartAdjustment = require('./Cart_Senario/cartAdjustment');
+let CartOrderPass = require('./Cart_Senario/cartOrderPass');
+let CartOrderFail = require('./Cart_Senario/cartOrderFail');
 
 const osSpecificOps = {
     platformName: 'Android',
@@ -56,4 +58,6 @@ const opts = {
 // CompareMoreThan3.test(osSpecificOps);
 // CompareDelete.test(osSpecificOps);
 // CompareToCart.test(osSpecificOps);
-CartAdjustment.test(osSpecificOps);
+// CartAdjustment.test(osSpecificOps);
+// CartOrderPass.test(osSpecificOps);
+CartOrderFail.test(osSpecificOps);
