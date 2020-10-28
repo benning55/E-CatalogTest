@@ -4,6 +4,8 @@ let Mchlevel2Test = require('./Mch_Level2_Senario/main')
 let Mchlevel1Test = require('./Mch_Level1_Senario/main');
 let MchDetailTest = require('./Mch_Detail_Senario/main');
 let TestFluke = require('./testlikemoandfluke/main');
+
+
 let LogoutViaUserTest = require('./Logout_Senario/logoutViaUser');
 let LogoutViaMenuTest = require('./Logout_Senario/logoutViaMenu');
 let Compare3Things = require('./Compare_Senario/compare3things');
@@ -13,6 +15,8 @@ let CompareToCart = require('./Compare_Senario/compareToCart');
 let CartAdjustment = require('./Cart_Senario/cartAdjustment');
 let CartOrderPass = require('./Cart_Senario/cartOrderPass');
 let CartOrderFail = require('./Cart_Senario/cartOrderFail');
+let userTab = require('./Usertab_senario/userDetail');
+let menuTabProductCategory = require('./MenuTab_Senario/productCategory');
 
 const osSpecificOps = {
     platformName: 'Android',
@@ -60,4 +64,6 @@ const opts = {
 // CompareToCart.test(osSpecificOps);
 // CartAdjustment.test(osSpecificOps);
 // CartOrderPass.test(osSpecificOps);
-CartOrderFail.test(osSpecificOps);
+// CartOrderFail.test(osSpecificOps);
+// userTab.test(osSpecificOps);
+menuTabProductCategory.test(osSpecificOps);
