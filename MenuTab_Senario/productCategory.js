@@ -96,7 +96,7 @@ const test = function (osSpecificOps) {
         });
 
         it('เช็ค ว่ามีหลอดไฟที่เป็นเครื่องใช้ไฟฟ้าหรือไม่', async function() {
-            await driverWd.waitForElementByXPath("SKU: 254589\nหลอดไฟตู้เย็น 15W E14 OR HATASHI\n16 บาท", asserters.isDisplayed, 2000, 100).then(async function(el) {
+            await driverWd.waitForElementByAccessibilityId("SKU: 254589\nหลอดไฟตู้เย็น 15W E14 OR HATASHI\n16 บาท", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 expect(await el.getAttribute("content-desc")).to.exist;
             });
         });

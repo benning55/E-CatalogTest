@@ -17,6 +17,7 @@ let CartOrderPass = require('./Cart_Senario/cartOrderPass');
 let CartOrderFail = require('./Cart_Senario/cartOrderFail');
 let userTab = require('./Usertab_senario/userDetail');
 let menuTabProductCategory = require('./MenuTab_Senario/productCategory');
+let menuTabProductBrand = require('./MenuTab_Senario/productBrand');
 
 const osSpecificOps = {
     platformName: 'Android',
@@ -66,4 +67,5 @@ const opts = {
 // CartOrderPass.test(osSpecificOps);
 // CartOrderFail.test(osSpecificOps);
 // userTab.test(osSpecificOps);
-menuTabProductCategory.test(osSpecificOps);
+// menuTabProductCategory.test(osSpecificOps);
+menuTabProductBrand.test(osSpecificOps);
