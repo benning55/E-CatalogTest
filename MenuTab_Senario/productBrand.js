@@ -83,19 +83,21 @@ const test = function (osSpecificOps) {
     describe('เช็คสินค้ากับแบรนว่าตรงไหม', function() {
         
         it('กดไปเลือกแบรนสินค้า', async function() {
-            await new Promise(res => setTimeout(res, 2000));
+            await new Promise(res => setTimeout(res, 3000));
             await driverWd.waitForElementByAccessibilityId("ช็อปตามแบรนด์", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 await el.click();
             });
         }); 
 
-        it('เลือกหมวดเครื่องใช้ไฟฟ้า', async function(){
+        it('เลือกแบรน ALLUSION', async function(){
+            await new Promise(res => setTimeout(res, 3000));
             await driverWd.waitForElementByXPath("//*[contains(@content-desc, 'Menu')]/android.view.View/android.view.View/android.view.View/android.view.View[1]", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 await el.click();
             });
         });
 
-        it('เช็ค ว่ามีหลอดไฟที่เป็นเครื่องใช้ไฟฟ้าหรือไม่', async function() {
+        it('เช็ค ว่ามีแบรน ALLUSION', async function() {
+            await new Promise(res => setTimeout(res, 3000));
             await driverWd.waitForElementByAccessibilityId("SKU: 1106003\nALLUSION\nโซฟา ALLUSION TESI สีดำ\n5,900 บาท", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 expect(await el.getAttribute("content-desc")).to.exist;
             });
