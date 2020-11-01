@@ -1,9 +1,9 @@
-let loginTest = require('./Login_Senario/main');
-let Mchlevel3Test = require('./Mch_Level3_Senario/main');
-let Mchlevel2Test = require('./Mch_Level2_Senario/main')
-let Mchlevel1Test = require('./Mch_Level1_Senario/main');
-let MchDetailTest = require('./Mch_Detail_Senario/main');
-let TestFluke = require('./testlikemoandfluke/main');
+// let loginTest = require('./Login_Senario/main');
+// let Mchlevel3Test = require('./Mch_Level3_Senario/main');
+// let Mchlevel2Test = require('./Mch_Level2_Senario/main')
+// let Mchlevel1Test = require('./Mch_Level1_Senario/main');
+// let MchDetailTest = require('./Mch_Detail_Senario/main');
+// let TestFluke = require('./testlikemoandfluke/main');
 
 
 let LogoutViaUserTest = require('./Logout_Senario/logoutViaUser');
@@ -19,6 +19,11 @@ let userTab = require('./Usertab_senario/userDetail');
 let menuTabProductCategory = require('./MenuTab_Senario/productCategory');
 let menuTabProductBrand = require('./MenuTab_Senario/productBrand');
 let menuTabLanguage = require('./MenuTab_Senario/language');
+let mchDetailAndCompare = require('./MchDetail_Senario/mchDetailAndCompare');
+let mchInformation = require('./MchDetail_Senario/mchInformation');
+
+
+skip = false;
 
 const osSpecificOps = {
     platformName: 'Android',
@@ -42,6 +47,11 @@ const opts = {
     }
 };
 
+beforeEach(function () {
+    if (skip) {
+        this.skip();
+    }
+});
 // ทดสอบกับ Appium Flutter Driver 
 // loginTest.loginFail(opts);
 // loginTest.loginPass(opts);
@@ -70,4 +80,10 @@ const opts = {
 // userTab.test(osSpecificOps);
 // menuTabProductCategory.test(osSpecificOps);
 // menuTabProductBrand.test(osSpecificOps);
-menuTabLanguage.test(osSpecificOps);
+// menuTabLanguage.test(osSpecificOps);
+// mchDetailAndCompare.test(osSpecificOps);
+mchInformation.test(osSpecificOps);
+
+after (async function (){
+    await driverWd.quit();
+});

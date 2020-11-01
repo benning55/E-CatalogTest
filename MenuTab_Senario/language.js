@@ -4,16 +4,17 @@ const {
 const asserters = require("wd/lib/asserters");
 const wd = require("wd");
 const { after } = require("mocha");
-var skip = false;
+// var skip = false;
 const utils = require('../Utils/utils');
 
 const test = function (osSpecificOps) {
 
-    beforeEach(function () {
-        if (skip) {
-            this.skip();
-        }
-    });
+    // beforeEach(function () {
+    //     console.log("before Lamguage " + skip);
+    //     if (skip) {
+    //         this.skip();
+    //     }
+    // });
 
     afterEach(async function () {
         if (this.currentTest.state == 'failed') {
@@ -25,11 +26,18 @@ const test = function (osSpecificOps) {
                 }
             );
             skip = true;
+            console.log("After Lamguage " + skip);
         }
     });
 
+    // before(function (){});
+
 
     describe("initial for menu tab 3", () => {
+
+        before(function (){
+            skip = false;
+        });
 
         it("Start Application", async function () {
             this.timeout(3000 * 10000);
@@ -71,6 +79,10 @@ const test = function (osSpecificOps) {
     });
 
     describe('กดเข้าแถบ เมนู', function () {
+
+        before(function (){
+            skip = false;
+        });
         
         it('กดไปที่ปุ่มผู้เมนู', async function() {
             await new Promise(res => setTimeout(res, 2000));
@@ -81,6 +93,10 @@ const test = function (osSpecificOps) {
     });
 
     describe('เช็คว่าเปลี่ยนภาษาแล้วเปลี่ยนไหม', function() {
+
+        before(function (){
+            skip = false;
+        });
         
         it('กดไปเลือกที่เปลี่ยนภาษา', async function() {
             await new Promise(res => setTimeout(res, 3000));
@@ -103,10 +119,6 @@ const test = function (osSpecificOps) {
             });
         });
      });
-
-    after (async function (){
-        await driverWd.quit();
-    });
 
 }
 

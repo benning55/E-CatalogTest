@@ -28,6 +28,8 @@ const test = function (osSpecificOps) {
         }
     });
 
+    before(function (){});
+
 
     describe("initial for menu tab 2", () => {
 
@@ -104,9 +106,9 @@ const test = function (osSpecificOps) {
         });
      });
 
-    after (async function (){
-        await driverWd.quit();
-    });
+    // after (async function (){
+    //     await driverWd.quit();
+    // });
 
 }
 

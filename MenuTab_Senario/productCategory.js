@@ -28,6 +28,7 @@ const test = function (osSpecificOps) {
         }
     });
 
+    before(function (){});
 
     describe("initial for menu tab 1", () => {
 
@@ -90,21 +91,23 @@ const test = function (osSpecificOps) {
         }); 
 
         it('เลือกหมวดเครื่องใช้ไฟฟ้า', async function(){
+            await new Promise(res => setTimeout(res, 2000));
             await driverWd.waitForElementByAccessibilityId("เครื่องใช้ไฟฟ้า", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 await el.click();
             });
         });
 
         it('เช็ค ว่ามีหลอดไฟที่เป็นเครื่องใช้ไฟฟ้าหรือไม่', async function() {
+            await new Promise(res => setTimeout(res, 2000));
             await driverWd.waitForElementByAccessibilityId("SKU: 254589\nหลอดไฟตู้เย็น 15W E14 OR HATASHI\n16 บาท", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 expect(await el.getAttribute("content-desc")).to.exist;
             });
         });
      });
 
-    after (async function (){
-        await driverWd.quit();
-    });
+    // after (async function (){
+    //     await driverWd.quit();
+    // });
 
 }
 
