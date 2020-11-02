@@ -5,17 +5,9 @@ const {
 const asserters = require("wd/lib/asserters");
 const wd = require("wd");
 const { after } = require("mocha");
-// var skip = false;
 const utils = require('../Utils/utils');
 
 const test = function (osSpecificOps) {
-
-    // beforeEach(function () {
-    //     console.log("before " + skip);
-    //     if (skip) {
-    //         this.skip();
-    //     }
-    // });
 
     afterEach(async function () {
         if (this.currentTest.state == 'failed') {
@@ -26,13 +18,16 @@ const test = function (osSpecificOps) {
                     require('fs').writeFile(screenshotPath + imgName + '.png', image, 'base64', function (err) {});
                 }
             );
-            // console.log(skip);
             skip = true;
         }
     });
 
 
-    describe("initial for compare 1", () => {
+    describe("initial for Mch Detail 1", () => {
+
+        before(function (){
+            skip = false;
+        });
 
         it("Start Application", async function () {
             this.timeout(3000 * 10000);
@@ -74,6 +69,10 @@ const test = function (osSpecificOps) {
     });
 
     describe('สินค้าไม่มีราคาโปรโมชั่น', function () {
+
+        before(function (){
+            skip = false;
+        });
         
         it('กดไปที่หมวดเครื่องใช้ไฟฟ้า', async function() {
             this.timeout(50000);

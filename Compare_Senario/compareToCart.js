@@ -4,16 +4,9 @@ const {
 const asserters = require("wd/lib/asserters");
 const wd = require("wd");
 const { after } = require("mocha");
-var skip = false;
 const utils = require('../Utils/utils');
 
 const test = function (osSpecificOps) {
-
-    beforeEach(function () {
-        if (skip) {
-            this.skip();
-        }
-    });
 
     afterEach(async function () {
         if (this.currentTest.state == 'failed') {
@@ -30,6 +23,10 @@ const test = function (osSpecificOps) {
 
 
     describe("initial for compare 1", () => {
+
+        before(function (){
+            skip = false;
+        });
 
         it("Start Application", async function () {
             this.timeout(3000 * 10000);
@@ -71,6 +68,10 @@ const test = function (osSpecificOps) {
     });
 
     describe('Compare 3 things and confirm', function () {
+
+        before(function (){
+            skip = false;
+        });
         
         it('กดไปที่หมวดเครื่องใช้ไฟฟ้า', async function() {
             this.timeout(50000);
@@ -117,6 +118,10 @@ const test = function (osSpecificOps) {
 
     describe('Add compare product to cart', function() {
 
+        before(function (){
+            skip = false;
+        });
+
         it('กดสินค้าที่เลือกเพิ่มเข้าตะกร้า', async function() {
             await driverWd.waitForElementByXPath("(//android.widget.Button[@content-desc='ใส่รถเข็น'])[2]", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 await el.click();
@@ -129,10 +134,6 @@ const test = function (osSpecificOps) {
             });
             expect(await driverWd.element('accessibility id', 'SKU: 1085163\nเครื่องผสมอาหารมือถือ COCORU AKAI สีแดง\n799/EA\n799')).to.exist;
         });
-    });
-
-    after (async function (){
-        await driverWd.quit();
     });
 }
 

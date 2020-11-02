@@ -4,16 +4,9 @@ const {
 const asserters = require("wd/lib/asserters");
 const wd = require("wd");
 const { after } = require("mocha");
-var skip = false;
 const utils = require('../Utils/utils');
 
 const test = function (osSpecificOps) {
-
-    beforeEach(function () {
-        if (skip) {
-            this.skip();
-        }
-    });
 
     afterEach(async function () {
         if (this.currentTest.state == 'failed') {
@@ -28,10 +21,11 @@ const test = function (osSpecificOps) {
         }
     });
 
-    before(function (){});
-
-
     describe("initial for menu tab 2", () => {
+
+        before(function (){
+            skip = false;
+        });
 
         it("Start Application", async function () {
             this.timeout(3000 * 10000);
@@ -73,6 +67,10 @@ const test = function (osSpecificOps) {
     });
 
     describe('กดเข้าแถบ เมนู', function () {
+
+        before(function (){
+            skip = false;
+        });
         
         it('กดไปที่ปุ่มผู้เมนู', async function() {
             await new Promise(res => setTimeout(res, 2000));
@@ -83,6 +81,10 @@ const test = function (osSpecificOps) {
     });
 
     describe('เช็คสินค้ากับแบรนว่าตรงไหม', function() {
+
+        before(function (){
+            skip = false;
+        });
         
         it('กดไปเลือกแบรนสินค้า', async function() {
             await new Promise(res => setTimeout(res, 3000));
@@ -105,10 +107,6 @@ const test = function (osSpecificOps) {
             });
         });
      });
-
-    // after (async function (){
-    //     await driverWd.quit();
-    // });
 
 }
 

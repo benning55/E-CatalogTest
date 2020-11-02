@@ -4,16 +4,9 @@ const {
 const asserters = require("wd/lib/asserters");
 const wd = require("wd");
 const { after } = require("mocha");
-var skip = false;
 const utils = require('../Utils/utils');
 
 const test = function (osSpecificOps) {
-
-    beforeEach(function () {
-        if (skip) {
-            this.skip();
-        }
-    });
 
     afterEach(async function () {
         if (this.currentTest.state == 'failed') {
@@ -29,7 +22,11 @@ const test = function (osSpecificOps) {
     });
 
 
-    describe("initial for compare 1", () => {
+    describe("initial for cart 1", () => {
+
+        before(function (){
+            skip = false;
+        });
 
         it("Start Application", async function () {
             this.timeout(3000 * 10000);
@@ -71,6 +68,10 @@ const test = function (osSpecificOps) {
     });
 
     describe('Compare 3 things and confirm', function () {
+
+        before(function (){
+            skip = false;
+        });
         
         it('กดไปที่หมวดเครื่องใช้ไฟฟ้า', async function() {
             this.timeout(50000);
@@ -117,6 +118,10 @@ const test = function (osSpecificOps) {
 
     describe('Add product to cart', function() {
 
+        before(function (){
+            skip = false;
+        });
+
         it('กดสินค้าที่เลือกเพิ่มเข้าตะกร้า1', async function() {
             await driverWd.waitForElementByXPath("(//android.widget.Button[@content-desc='ใส่รถเข็น'])[2]", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 await el.click();
@@ -138,6 +143,10 @@ const test = function (osSpecificOps) {
 
     // จำนวนสินค้ายังไม่เกิน 999
     describe('แก้ไขจำนวนสินค้า', function() {
+
+        before(function (){
+            skip = false;
+        });
 
         it('ไปที่แถบ ตะกร้า', async function() {
             await driverWd.waitForElementByAccessibilityId("2\nรถเข็นสินค้า\nแท็บที่ 2 จาก 4", asserters.isDisplayed, 2000, 100).then(async function(el) {
@@ -204,6 +213,10 @@ const test = function (osSpecificOps) {
     // จำนวนสินค้าเกิน 999
     describe('แก้ไขจำนวนสินค้าเกิน 999', function(){
 
+        before(function (){
+            skip = false;
+        });
+
         it('กดเพิ่มสินค้าให้เกิน 999', async function() {
             await driverWd.waitForElementByXPath("//*[contains(@content-desc, '1085163')]/android.widget.EditText", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 await el.click();
@@ -249,6 +262,10 @@ const test = function (osSpecificOps) {
     // ลบสินค้า
     describe('Delete some product in cart', function(){
 
+        before(function (){
+            skip = false;
+        });
+
         it('ลบสินค้าจากตะกร้า', async function(){
             await driverWd.waitForElementByXPath("//*[contains(@content-desc, '1085163')]/android.view.View[1]", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 await el.click();
@@ -279,10 +296,6 @@ const test = function (osSpecificOps) {
 
             expect(totalPrice).to.equal((parseInt(priceOne)*799).toString());
         });
-    });
-
-    after (async function (){
-        await driverWd.quit();
     });
 }
 

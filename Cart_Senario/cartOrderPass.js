@@ -4,16 +4,9 @@ const {
 const asserters = require("wd/lib/asserters");
 const wd = require("wd");
 const { after } = require("mocha");
-var skip = false;
 const utils = require('../Utils/utils');
 
 const test = function (osSpecificOps) {
-
-    beforeEach(function () {
-        if (skip) {
-            this.skip();
-        }
-    });
 
     afterEach(async function () {
         if (this.currentTest.state == 'failed') {
@@ -30,6 +23,10 @@ const test = function (osSpecificOps) {
 
 
     describe("initial for cart 2", () => {
+
+        before(function (){
+            skip = false;
+        });
 
         it("Start Application", async function () {
             this.timeout(3000 * 10000);
@@ -71,6 +68,10 @@ const test = function (osSpecificOps) {
     });
 
     describe('นำสินค้าเข้าตะกร้า', function () {
+
+        before(function (){
+            skip = false;
+        });
         
         it('กดปุ่มและค้นหาสินค้า', async function() {
             this.timeout(50000);
@@ -108,6 +109,10 @@ const test = function (osSpecificOps) {
 
     describe('สร้างใบคำสั่งซื้อผ่าน', async function(){
 
+        before(function (){
+            skip = false;
+        });
+
         it('กรอกเบอร์โทรศพท์มือถือ', async function(){
             this.timeout(50000)
             await driverWd.waitForElementByXPath("//*[contains(@content-desc, 'หมายเลขโทรศัพท์อ้างอิง')]/following::android.widget.EditText", asserters.isDisplayed, 2000, 100).then(async function(el) {
@@ -128,10 +133,6 @@ const test = function (osSpecificOps) {
                 expect(el).to.exist;
             });
         });
-    });
-
-    after (async function (){
-        await driverWd.quit();
     });
 }
 

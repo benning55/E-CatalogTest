@@ -5,16 +5,9 @@ const {
 const asserters = require("wd/lib/asserters");
 const wd = require("wd");
 const { after } = require("mocha");
-var skip = false;
 const utils = require('../Utils/utils');
 
 const test = function (osSpecificOps) {
-
-    beforeEach(function () {
-        if (skip) {
-            this.skip();
-        }
-    });
 
     afterEach(async function () {
         if (this.currentTest.state == 'failed') {
@@ -31,6 +24,10 @@ const test = function (osSpecificOps) {
 
 
     describe("initial for compare 1", () => {
+
+        before(function (){
+            skip = false;
+        });
 
         it("Start Application", async function () {
             this.timeout(3000 * 10000);
@@ -72,6 +69,10 @@ const test = function (osSpecificOps) {
     });
 
     describe('Compare 3 things', function () {
+
+        before(function (){
+            skip = false;
+        });
         
         it('กดไปที่หมวดเครื่องใช้ไฟฟ้า', async function() {
             this.timeout(50000);
@@ -113,6 +114,10 @@ const test = function (osSpecificOps) {
     });
 
     describe('ลบสินค้า 1 ชิ้นจากช่องเปรียบเทียบ', function(){
+
+        before(function (){
+            skip = false;
+        });
         
         it('กดปุ่มลบสินค้าต้องเหลือสินค้า 2 ชิ้น', async function(){
             await new Promise(res => setTimeout(res, 2000));
@@ -124,6 +129,10 @@ const test = function (osSpecificOps) {
     });
 	
     describe('ลบสินค้าทั้งหมด', function(){
+
+        before(function (){
+            skip = false;
+        });
 
         it('กดปุ่มลบทั้งหมด', async function() {
             await new Promise(res => setTimeout(res, 2000));
@@ -138,10 +147,6 @@ const test = function (osSpecificOps) {
                 expect(e.cause.value.message).to.exist;
             }
         })
-    });
-
-    after (async function (){
-        await driverWd.quit();
     });
 }
 

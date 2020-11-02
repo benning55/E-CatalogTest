@@ -1,9 +1,11 @@
 const {
-    expect
+    expect,
+    assert
 } = require("chai");
 const asserters = require("wd/lib/asserters");
 const wd = require("wd");
 const { after } = require("mocha");
+// var skip = false;
 const utils = require('../Utils/utils');
 
 const test = function (osSpecificOps) {
@@ -11,7 +13,7 @@ const test = function (osSpecificOps) {
     afterEach(async function () {
         if (this.currentTest.state == 'failed') {
             var imgName = (this.currentTest.parent.title).replace(/ /g, "_");
-            var screenshotPath = 'C:\\Users\\bmais\\Documents\\SeniorHomepro\\E-CatalogTest\\images\\userTab\\'
+            var screenshotPath = 'C:\\Users\\bmais\\Documents\\SeniorHomepro\\E-CatalogTest\\images\\login\\'
             await driverWd.takeScreenshot().then(
                 function (image, err) {
                     require('fs').writeFile(screenshotPath + imgName + '.png', image, 'base64', function (err) {});
@@ -22,7 +24,7 @@ const test = function (osSpecificOps) {
     });
 
 
-    describe("initial for usertab 1", () => {
+    describe("Login Pass Test", () => {
 
         before(function (){
             skip = false;
@@ -63,54 +65,16 @@ const test = function (osSpecificOps) {
             await driverWd.waitForElementByAccessibilityId("เข้าสู่ระบบ", asserters.isDisplayed, 2000, 100).then(async function(el) {
                 await el.click();
             });
-            await new Promise(res => setTimeout(res, 5000));
-        });
-    });
-
-    describe('กดเข้าแถบ User', function () {
-
-        before(function (){
-            skip = false;
-        });
-        
-        it('กดไปที่ปุ่มผู้ใช้งาน', async function() {
             await new Promise(res => setTimeout(res, 2000));
-            await driverWd.waitForElementByAccessibilityId("ผู้ใช้งาน\nแท็บที่ 3 จาก 4", asserters.isDisplayed, 2000, 100).then(async function(el) {
-                await el.click();
+        });
+
+        it('check is Login Pass', async function () {
+            await new Promise(res => setTimeout(res, 5000));
+            await driverWd.waitForElementByAccessibilityId("S015 - ประชาชื่น", asserters.isDisplayed, 5000, 100).then(async function(el) {
+                expect(el).to.exist;
             });
-        }); 
+        })
     });
-
-    describe('เช็คข้อมูลของ USER', function() {
-
-        before(function (){
-            skip = false;
-        });
-        
-        it('เช็ค EMP ID', async function (){
-            await driverWd.waitForElementByAccessibilityId("551503", asserters.isDisplayed, 2000, 100).then(async function(el) {
-                expect(await el.getAttribute("content-desc")).to.exist;
-            });
-        });
-
-        it('เช็ค EMP Name', async function(){
-            await driverWd.waitForElementByAccessibilityId("Pichaichard Puktongsuk", asserters.isDisplayed, 2000, 100).then(async function(el) {
-                expect(await el.getAttribute("content-desc")).to.exist;
-            });
-        });
-
-        it('เช็ค Transaction Date', async function() {
-            await driverWd.waitForElementByXPath("//*[contains(@content-desc, '/2020')]", asserters.isDisplayed, 2000, 100).then(async function(el) {
-                expect(await el.getAttribute("content-desc")).to.exist;
-            });
-        });
-
-        it('เช็ค สาขาที่ขาย', async function() {
-            await driverWd.waitForElementByAccessibilityId("S015 - ประชาชื่น", asserters.isDisplayed, 2000, 100).then(async function(el) {
-                expect(await el.getAttribute("content-desc")).to.exist;
-            });
-        });
-     });
 }
 
 module.exports = {

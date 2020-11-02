@@ -5,7 +5,6 @@ const {
 const asserters = require("wd/lib/asserters");
 const wd = require("wd");
 const { after } = require("mocha");
-// var skip = false;
 const utils = require('../Utils/utils');
 
 const test = function (osSpecificOps) {
@@ -19,13 +18,16 @@ const test = function (osSpecificOps) {
                     require('fs').writeFile(screenshotPath + imgName + '.png', image, 'base64', function (err) {});
                 }
             );
-            // console.log(skip);
             skip = true;
         }
     });
 
 
-    describe("initial for compare 1", () => {
+    describe("initial for Mch Cart 2", () => {
+
+        before(function (){
+            skip = false;
+        });
 
         it("Start Application", async function () {
             this.timeout(3000 * 10000);
@@ -67,6 +69,10 @@ const test = function (osSpecificOps) {
     });
 
     describe('เช็คแถบส่วนรายละเอียดสินค้า', function () {
+
+        before(function (){
+            skip = false;
+        });
         
         it('กดไปที่หมวดประตูและหน้าต่าง', async function() {
             this.timeout(50000);
@@ -93,17 +99,6 @@ const test = function (osSpecificOps) {
                 await el.click();
             });
         });
-        
-        // it('ไปหาเช็คแถบรายละเอียดสินค้า', async function(){
-        //     await new Promise(res => setTimeout(res, 2000));
-        //     const elPath = "รายละเอียดสินค้า\nแท็บที่ 1 จาก 3";
-        //     const element = await utils.scrollUntilVisible(
-        //         "accessibility id",
-        //         elPath,
-        //         driverWd,
-        //     );
-        //     expect(element).to.exist;
-        // })
 
         it('ไปหาเช็คแถบรายละเอียดสินค้ากดปุ่มเพิ่มเติม', async function(){
             this.timeout(50000);
@@ -121,6 +116,171 @@ const test = function (osSpecificOps) {
         it('มีรายละเอียดสินค้า', async function(){
             await new Promise(res => setTimeout(res, 2000));
             const elPath = "ประตู PVC เกล็ดล่างพร้อมวงกบ ASIA 70X180 ซม. สีครีม ไม่เจาะ\nคุณสมบัติ\nวิธีใช้งาน\nคำแนะนำ\nข้อควรระวัง";
+            const element = await utils.scrollUntilVisible(
+                "accessibility id",
+                elPath,
+                driverWd,
+            );
+            expect(element).to.exist;
+        });
+
+    });
+
+    // ข้อมูลจำเพาะ
+    describe('เช็คแถบส่วนขข้อมูลจำเพาะ', function () {
+
+        before(function (){
+            skip = false;
+        });
+        
+        it('กลับไปด้านบน', async function() {
+            await new Promise(res => setTimeout(res, 2000));
+            await driverWd.waitForElementByAccessibilityId("BACK TO TOP\nBACK\nTO TOP", asserters.isDisplayed, 2000, 100).then(async function(el) {
+                await el.click();
+            });
+        }); 
+
+        it('ไปยังหมวดข้อมูลจำเพาะ', async function() {
+            this.timeout(50000);
+            await new Promise(res => setTimeout(res, 2000));
+            const elPath = "ข้อมูลจำเพาะ\nแท็บที่ 2 จาก 3";
+            const element = await utils.scrollUntilVisible(
+                "accessibility id",
+                elPath,
+                driverWd,
+            );
+            await element.click();
+        });
+
+        it('เช็ค Brand', async function(){
+            this.timeout(30000);
+            await new Promise(res => setTimeout(res, 2000));
+            const elPath = "Brand\nASIA";
+            const element = await utils.scrollUntilVisible(
+                "accessibility id",
+                elPath,
+                driverWd,
+            );
+            expect(element).to.exist;
+        });
+
+
+        it('เช็ค Color', async function(){
+            this.timeout(30000);
+            await new Promise(res => setTimeout(res, 2000));
+            const elPath = "Color\nครีม";
+            const element = await utils.scrollUntilVisible(
+                "accessibility id",
+                elPath,
+                driverWd,
+            );
+            expect(element).to.exist;
+        });
+
+        it('เช็ค ประเภทหน้าบาน', async function(){
+            this.timeout(30000);
+            await new Promise(res => setTimeout(res, 2000));
+            const elPath = "ประเภทหน้าบาน\nเกล็ด";
+            const element = await utils.scrollUntilVisible(
+                "accessibility id",
+                elPath,
+                driverWd,
+            );
+            expect(element).to.exist;
+        });
+
+        it('เช็ค ผิวเคลือบ', async function(){
+            this.timeout(30000);
+            await new Promise(res => setTimeout(res, 2000));
+            const elPath = "ผิวเคลือบ\nไม่เคลือบ UV";
+            const element = await utils.scrollUntilVisible(
+                "accessibility id",
+                elPath,
+                driverWd,
+            );
+            expect(element).to.exist;
+        });
+
+        it('เช็ค การขึ้นรูป', async function(){
+            this.timeout(30000);
+            await new Promise(res => setTimeout(res, 2000));
+            const elPath = "การขึ้นรูป\nบานฉีด";
+            const element = await utils.scrollUntilVisible(
+                "accessibility id",
+                elPath,
+                driverWd,
+            );
+            expect(element).to.exist;
+        });
+
+        it('เช็ค ลายหน้าบาน', async function(){
+            this.timeout(30000);
+            await new Promise(res => setTimeout(res, 2000));
+            const elPath = "ลายหน้าบาน\nเกล็ดล่าง";
+            const element = await utils.scrollUntilVisible(
+                "accessibility id",
+                elPath,
+                driverWd,
+            );
+            expect(element).to.exist;
+        });
+
+        it('เช็ค Material', async function(){
+            this.timeout(30000);
+            await new Promise(res => setTimeout(res, 2000));
+            const elPath = "Material\nPVC";
+            const element = await utils.scrollUntilVisible(
+                "accessibility id",
+                elPath,
+                driverWd,
+            );
+            expect(element).to.exist;
+        });
+
+        it('เช็ค Size', async function(){
+            this.timeout(30000);
+            await new Promise(res => setTimeout(res, 2000));
+            const elPath = "Size\n70X180CM";
+            const element = await utils.scrollUntilVisible(
+                "accessibility id",
+                elPath,
+                driverWd,
+            );
+            expect(element).to.exist;
+        });
+
+    });
+
+    // โปรโมชัน
+    describe('เช็คแถบส่วนขข้อมูลจำเพาะ', function () {
+
+        before(function (){
+            skip = false;
+        });
+        
+        it('กลับไปด้านบน', async function() {
+            await new Promise(res => setTimeout(res, 2000));
+            await driverWd.waitForElementByAccessibilityId("BACK TO TOP\nBACK\nTO TOP", asserters.isDisplayed, 2000, 100).then(async function(el) {
+                await el.click();
+            });
+        }); 
+
+        it('ไปยังหมวดโปรโมชัน', async function() {
+            this.timeout(50000);
+            await new Promise(res => setTimeout(res, 2000));
+            const elPath = "โปรโมชัน\nแท็บที่ 3 จาก 3";
+            const element = await utils.scrollUntilVisible(
+                "accessibility id",
+                elPath,
+                driverWd,
+            );
+            await element.click();
+        });
+
+        it('เช็ค โปรโมชัน 1 อันเป็นตัวอย่างว่าข้อมูลเข้า', async function(){
+            this.timeout(30000);
+            await new Promise(res => setTimeout(res, 2000));
+            const elPath = " Tools dayส่วนลดท้ายบิล-HT,PT_MKT\nระยะเวลาตั้งแต่ 13/02/2020 - 31/12/2020\nCA18000189\n13/02/2020 - 31/12/2020";
             const element = await utils.scrollUntilVisible(
                 "accessibility id",
                 elPath,

@@ -4,16 +4,9 @@ const {
 const asserters = require("wd/lib/asserters");
 const wd = require("wd");
 const { after } = require("mocha");
-var skip = false;
 const utils = require('../Utils/utils');
 
 const test = function (osSpecificOps) {
-
-    beforeEach(function () {
-        if (skip) {
-            this.skip();
-        }
-    });
 
     afterEach(async function () {
         if (this.currentTest.state == 'failed') {
@@ -30,6 +23,10 @@ const test = function (osSpecificOps) {
 
 
     describe("initial for compare 1", () => {
+
+        before(function (){
+            skip = false;
+        });
 
         it("Start Application", async function () {
             this.timeout(3000 * 10000);
@@ -71,6 +68,10 @@ const test = function (osSpecificOps) {
     });
 
     describe('Compare 3 things and confirm', function () {
+
+        before(function (){
+            skip = false;
+        });
         
         it('กดไปที่หมวดเครื่องใช้ไฟฟ้า', async function() {
             this.timeout(50000);
@@ -241,9 +242,6 @@ const test = function (osSpecificOps) {
         });
     });
 
-    after (async function (){
-        await driverWd.quit();
-    });
 }
 
 module.exports = {

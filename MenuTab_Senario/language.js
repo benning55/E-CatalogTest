@@ -4,17 +4,9 @@ const {
 const asserters = require("wd/lib/asserters");
 const wd = require("wd");
 const { after } = require("mocha");
-// var skip = false;
 const utils = require('../Utils/utils');
 
 const test = function (osSpecificOps) {
-
-    // beforeEach(function () {
-    //     console.log("before Lamguage " + skip);
-    //     if (skip) {
-    //         this.skip();
-    //     }
-    // });
 
     afterEach(async function () {
         if (this.currentTest.state == 'failed') {
@@ -26,12 +18,8 @@ const test = function (osSpecificOps) {
                 }
             );
             skip = true;
-            console.log("After Lamguage " + skip);
         }
     });
-
-    // before(function (){});
-
 
     describe("initial for menu tab 3", () => {
 
