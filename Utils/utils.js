@@ -60,7 +60,7 @@ const scrollUntilVisible = async (
       } else {
         touchAction = new wd.TouchAction(global.driverWd)
           .longPress({ x: co_x ? co_x : 100, y: 1000 })
-          .moveTo({ x: co_x ? co_x : 100, y: 800 })
+          .moveTo({ x: co_x ? co_x : 100, y: 600 })
           .release();
       }
     } else {

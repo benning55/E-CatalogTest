@@ -1,5 +1,6 @@
 let LogInPass = require('./Login_Senario/loginPass');
 let LogInFail = require('./Login_Senario/loginFail');
+let LogInFail2 = require('./Login_Senario/loginFail2');
 let LogoutViaUserTest = require('./Logout_Senario/logoutViaUser');
 let LogoutViaMenuTest = require('./Logout_Senario/logoutViaMenu');
 let Search = require('./Search_Senario/search');
@@ -54,7 +55,3 @@ menuTabLanguage.test(osSpecificOps);
 mchDetailAndCompare.test(osSpecificOps);
 mchInformation.test(osSpecificOps);
 mchStock.test(osSpecificOps);
-
-after (async function (){
-    await driverWd.quit();
-});
