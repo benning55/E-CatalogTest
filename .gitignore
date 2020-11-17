@@ -5,7 +5,8 @@ node_modules
 # local env files
 .env.local
 .env.*.local
-
+automate_ecatalog-1.0.0.tgz
+test.zip
 # Editor directories and files
 .idea
 .vscode
