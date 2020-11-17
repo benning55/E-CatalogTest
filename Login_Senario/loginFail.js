@@ -11,21 +11,7 @@ const utils = require('../Utils/utils');
 const test = function (osSpecificOps) {
 
     describe('Log In To Fail', function(){
-
-        afterEach(async function () {
-            if (this.currentTest.state == 'failed') {
-                var imgName = (this.currentTest.parent.title).replace(/ /g, "_");
-                var screenshotPath = 'C:\\Users\\bmais\\Documents\\SeniorHomepro\\E-CatalogTest\\images\\login\\'
-                await driverWd.takeScreenshot().then(
-                    function (image, err) {
-                        require('fs').writeFile(screenshotPath + imgName + '.png', image, 'base64', function (err) {});
-                    }
-                );
-                skip = true;
-            }
-        });
-    
-    
+        
         describe("initial login to fail 1", () => {
     
             before(function (){

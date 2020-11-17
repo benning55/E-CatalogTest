@@ -1,6 +1,5 @@
 let LogInPass = require('./Login_Senario/loginPass');
 let LogInFail = require('./Login_Senario/loginFail');
-let LogInFail2 = require('./Login_Senario/loginFail2');
 let LogoutViaUserTest = require('./Logout_Senario/logoutViaUser');
 let LogoutViaMenuTest = require('./Logout_Senario/logoutViaMenu');
 let Search = require('./Search_Senario/search');
@@ -32,6 +31,26 @@ const osSpecificOps = {
 beforeEach(function () {
     if (skip) {
         this.skip();
+    }
+});
+
+afterEach(async function () {
+    if (this.currentTest.state == 'failed') {
+        var imgName = (this.currentTest.parent.title).replace(/ /g, "_");
+        var imgName2 = (this.currentTest.title).replace(/ /g, "_");
+        var screenshotPath = "C:\\Users\\bmais\\Documents\\SeniorHomepro\\E-CatalogTest\\images\\"
+        // var screenshotPath = process.env.DEVICEFARM_LOG_DIR;
+        await driverWd.takeScreenshot().then(
+            function (image, err) {
+                require('fs').writeFile(
+                    screenshotPath +"/"+ imgName + '.png',
+                    image,
+                    'base64', 
+                    function (err) {}
+                );
+            }
+        );
+        skip = true;
     }
 });
 

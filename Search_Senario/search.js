@@ -9,20 +9,6 @@ const utils = require('../Utils/utils');
 const test = function (osSpecificOps) {
 
     describe ('Test Search Mch', function() {
-        
-        afterEach(async function () {
-            if (this.currentTest.state == 'failed') {
-                var imgName = (this.currentTest.parent.title).replace(/ /g, "_");
-                var screenshotPath = 'C:\\Users\\bmais\\Documents\\SeniorHomepro\\E-CatalogTest\\images\\search\\'
-                await driverWd.takeScreenshot().then(
-                    function (image, err) {
-                        require('fs').writeFile(screenshotPath + imgName + '.png', image, 'base64', function (err) {});
-                    }
-                );
-                skip = true;
-            }
-        });
-    
     
         describe("initial for search 1", () => {
     
@@ -62,10 +48,11 @@ const test = function (osSpecificOps) {
             });
     
             it('Click Log In Button', async function () {
+                this.timeout(30000);
                 await driverWd.waitForElementByAccessibilityId("เข้าสู่ระบบ", asserters.isDisplayed, 2000, 100).then(async function(el) {
                     await el.click();
                 });
-                await new Promise(res => setTimeout(res, 2000));
+                await new Promise(res => setTimeout(res, 10000));
             });
         });
     
@@ -93,7 +80,7 @@ const test = function (osSpecificOps) {
             
             it('แสดงสินค้ารหัส 255255', async function() {
                 this.timeout(30000);
-                await driverWd.waitForElementByXPath("//*[contains(@content-desc, '255255')]", asserters.isDisplayed, 2000, 100).then(async function(el) {
+                await driverWd.waitForElementByXPath("//*[contains(@content-desc, '255255')]", asserters.isDisplayed, 20000, 100).then(async function(el) {
                     expect(el).to.exist;
                 });
             });

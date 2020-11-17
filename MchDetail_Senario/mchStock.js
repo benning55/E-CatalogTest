@@ -102,7 +102,7 @@ const test = function (osSpecificOps) {
                 });
             });
     
-            it('ไปหาเช็คแถบรายละเอียดสินค้ากดปุ่มเพิ่มเติม', async function(){
+            it('ไปหาและกดปุ่มสต๊อค', async function(){
                 this.timeout(50000);
                 await new Promise(res => setTimeout(res, 2000));
                 const elPath = "สต๊อค";

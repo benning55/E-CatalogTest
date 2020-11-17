@@ -120,7 +120,7 @@ const test = function (osSpecificOps) {
                     await el.click();
                 });
                 await new Promise(res => setTimeout(res, 2000));
-                utils.textToPress('0999999999', driverWd);
+                utils.textToPress('09999999999', driverWd);
                 await new Promise(res => setTimeout(res, 3000));
                 await driverWd.pressKeycode(66);
                 await driverWd.waitForElementByAccessibilityId("ยืนยัน", asserters.isDisplayed, 2000, 100).then(async function(el) {

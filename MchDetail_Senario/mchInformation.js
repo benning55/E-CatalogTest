@@ -253,7 +253,7 @@ const test = function (osSpecificOps) {
         });
     
         // โปรโมชัน
-        describe('เช็คแถบส่วนขข้อมูลจำเพาะ', function () {
+        describe('เช็คแถบส่วนโปรโมชัน', function () {
     
             before(function (){
                 skip = false;

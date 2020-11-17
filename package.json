@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "mocha index.js --timeout 10000",
+    "start": "mocha index.js --timeout 20000",
     "ios": "APPIUM_OS=ios npm start",
-    "android": "APPIUM_OS=android npm start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "android": "APPIUM_OS=android npm start"
   },
   "author": "Sedthawuth Maisonti",
   "license": "ISC",
@@ -20,5 +19,15 @@
     "wd": "^1.13.0",
     "wd-android": "^0.1.1",
     "webdriverio": "^6.4.2"
-  }
+  },
+  "bundledDependencies": [
+    "@wdio/cli",
+    "appium",
+    "appium-flutter-finder",
+    "chai",
+    "mocha",
+    "wd",
+    "wd-android",
+    "webdriverio"
+  ]
 }
